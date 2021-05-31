@@ -15,13 +15,12 @@ let target;
 
 money=+prompt('Ваш месячный доход');
 addExpenses=prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
-deposit=Boolean(prompt('Есть ли у вас депозит в банке?'));
+deposit=!!prompt('Есть ли у вас депозит в банке?');
 expenses1=prompt('Введите обязательную статью расходов?');
 amount1=+prompt('Во сколько это обойдется?');
 expenses2=prompt('Введите обязательную статью расходов?');
 amount2=+prompt('Во сколько это обойдется?');
 
-//budgetDay= money / 30;
 budgetMonth= money - ( amount1 + amount2 );
 target= mission / budgetMonth;
 budgetDay= budgetMonth / 30;
@@ -45,7 +44,7 @@ console.log(addExpenses.length);
 console.log('Период равен ' + period + ' месяцев');
 console.log('Цель заработать ' + mission + ' тенге');
 console.log(addExpenses.split(' , '));                          //разбиваем строку на массив
-console.log('Бюджет на месяц = ' + budgetMonth + ' тенге');
-console.log('Бюджет на один день равен ' + Math.floor(budgetDay) + ' тенге');              
+console.log('Бюджет на месяц составляет ' + budgetMonth + ' тенге');
+console.log('Бюджет на один день составляет ' + Math.floor(budgetDay) + ' тенге');              
 console.log('Цель будет достигнута за ' + Math.ceil(target) + ' месяцев');
 
