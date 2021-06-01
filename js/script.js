@@ -25,7 +25,7 @@ function getExpensesMonth(){
     sumAmount = amount1 + amount2;
     return sumAmount;
 }
-console.log('Расходы в месяц составляют ' + getExpensesMonth());
+console.log('Расходы в месяц составляют ' + getExpensesMonth() + ' тенге');
 
 function getAccumulatedMonth(){
     accumulatedMonth = money - sumAmount;
@@ -38,6 +38,7 @@ function getTargetMonth(){
     return 'Цель будет достигнута за ' + Math.ceil(target) + ' месяцев';
 }
 console.log(getTargetMonth());
+
 budgetDay = accumulatedMonth / 30;
 
 let getStatusIncome = function(){
