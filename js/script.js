@@ -9,27 +9,49 @@ let amount1 = +prompt('Во сколько это обойдется?');
 let expenses2 = prompt('Введите обязательную статью расходов?');
 let amount2 = +prompt('Во сколько это обойдется?');
 let period = 12;         
-let budgetMonth = money - ( amount1 + amount2 );                
-let budgetDay = budgetMonth / 30;
-let target = mission / budgetMonth;
+let accumulatedMonth;          
+let budgetDay;
+let target;
+let sumAmount;
 
-// Рассчёт в тенге 1Р = 5,84тенге
-if (budgetDay >= 12000) {
-    console.log('У вас высокий уровень дохода');
-} else if (budgetDay > 6000 && budgetDay < 12000) {
-    console.log('У вас средний уровень дохода');
-} else if (budgetDay <= 6000 && budgetDay >= 0) {
-    console.log('К сожалению у вас уровень дохода ниже среднего');
-} else if (budgetDay < 0){
-    console.log('Что то пошло не так');
+let showTypeOf = function(data){
+    return typeof data;
+};
+console.log(showTypeOf(money));
+console.log(showTypeOf(income));
+console.log(showTypeOf(deposit));
+
+function getExpensesMonth(){
+    sumAmount = amount1 + amount2;
+    return sumAmount;
 }
+console.log('Расходы в месяц составляют ' + getExpensesMonth());
 
-console.log(typeof money, typeof income, typeof deposit);
-console.log(addExpenses.length);
-console.log('Период равен ' + period + ' месяцев');
-console.log('Цель заработать ' + mission + ' тенге');
-console.log(addExpenses.split(' , '));                                          //разбиваем строку на массив
-console.log('Бюджет на месяц составляет ' + budgetMonth + ' тенге');
-console.log('Бюджет на один день составляет ' + Math.floor(budgetDay) + ' тенге');              
-console.log('Цель будет достигнута за ' + Math.ceil(target) + ' месяцев');
+function getAccumulatedMonth(){
+    accumulatedMonth = money - sumAmount;
+    return accumulatedMonth;
+}
+getAccumulatedMonth();
 
+function getTargetMonth(){
+    target = mission / accumulatedMonth;
+    return 'Цель будет достигнута за ' + Math.ceil(target) + ' месяцев';
+}
+console.log(getTargetMonth());
+budgetDay = accumulatedMonth / 30;
+
+let getStatusIncome = function(){
+    if (budgetDay >= 12000) {
+        return 'У вас высокий уровень дохода';
+    } else if (budgetDay > 6000 && budgetDay < 12000) {
+        return'У вас средний уровень дохода';
+    } else if (budgetDay <= 6000 && budgetDay >= 0) {
+        return'К сожалению у вас уровень дохода ниже среднего';
+    } else if (budgetDay < 0){
+        return'Что то пошло не так';
+    }
+};
+console.log(getStatusIncome());
+
+console.log(addExpenses.split(' , '));                                         
+console.log('Бюджет на один день составляет ' + Math.floor(budgetDay) + ' тенге');   
