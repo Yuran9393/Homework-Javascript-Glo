@@ -17,29 +17,21 @@ let sumAmount;
 let showTypeOf = function(data){
     return typeof data;
 };
-console.log(showTypeOf(money));
-console.log(showTypeOf(income));
-console.log(showTypeOf(deposit));
 
 function getExpensesMonth(){
     sumAmount = amount1 + amount2;
     return sumAmount;
 }
-console.log('Расходы в месяц составляют ' + getExpensesMonth() + ' тенге');
 
 function getAccumulatedMonth(){
     accumulatedMonth = money - sumAmount;
     return accumulatedMonth;
 }
-getAccumulatedMonth();
 
 function getTargetMonth(){
     target = mission / accumulatedMonth;
     return 'Цель будет достигнута за ' + Math.ceil(target) + ' месяцев';
 }
-console.log(getTargetMonth());
-
-budgetDay = accumulatedMonth / 30;
 
 let getStatusIncome = function(){
     if (budgetDay >= 12000) {
@@ -52,7 +44,16 @@ let getStatusIncome = function(){
         return'Что то пошло не так';
     }
 };
-console.log(getStatusIncome());
 
-console.log(addExpenses.split(' , '));                                         
+getExpensesMonth();
+getAccumulatedMonth();
+budgetDay = accumulatedMonth / 30;
+console.log(showTypeOf(money));
+console.log(showTypeOf(income));
+console.log(showTypeOf(deposit));
+console.log('Расходы в месяц составляют ' + getExpensesMonth() + ' тенге');
+console.log(addExpenses.split(' , '));  
+console.log(getTargetMonth());
 console.log('Бюджет на один день составляет ' + Math.floor(budgetDay) + ' тенге');   
+console.log(getStatusIncome());                                
+
