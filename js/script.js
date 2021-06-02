@@ -1,35 +1,52 @@
 'use strict';
-let money = +prompt('Ваш месячный доход');
+let isNumber = function(n) {
+    return !isNaN(parseFloat(n) && isFinite(n));
+};
+let money;
 let income = 'Работа в такси';
 let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую').toLowerCase();
 let deposit = confirm('Есть ли у вас депозит в банке?');
 let mission = 3000000;
-let expenses1 = prompt('Введите обязательную статью расходов?');
-let amount1 = +prompt('Во сколько это обойдется?');
-let expenses2 = prompt('Введите обязательную статью расходов?');
-let amount2 = +prompt('Во сколько это обойдется?');
 let period = 12;         
 let accumulatedMonth;          
 let budgetDay;
 let target;
 let sumAmount;
+let expenses=[];
+
+let start = function() {
+    do {
+        money = +prompt('Ваш месячный доход');
+    }
+    while(!isNumber(money));};
 
 let showTypeOf = function(data){
     return typeof data;
 };
 
-function getExpensesMonth(){
-    sumAmount = amount1 + amount2;
-    return sumAmount;
-}
+let getExpensesMonth = function(){
+    let sum=0;
+    for (let i = 0; i < 2; i++){
+            expenses[i] = prompt('Введите обязательную статью расходов');
+            sum += +prompt('Во сколько это обойдется?');         
+    }
+    if (isNumber(sum)){
+        console.log(sum);                   
+        return sum;
+    }  
+};
+let expensesAmount = getExpensesMonth();
 
 function getAccumulatedMonth(){
-    accumulatedMonth = money - sumAmount;
+    accumulatedMonth = money - expensesAmount;
     return accumulatedMonth;
 }
 
 function getTargetMonth(){
     target = mission / accumulatedMonth;
+    if (target < 0 ){
+        return 'Цель будет не достигнута'; 
+    }
     return 'Цель будет достигнута за ' + Math.ceil(target) + ' месяцев';
 }
 
@@ -45,13 +62,13 @@ let getStatusIncome = function(){
     }
 };
 
-getExpensesMonth();
+start();
 getAccumulatedMonth();
 budgetDay = accumulatedMonth / 30;
 console.log(showTypeOf(money));
 console.log(showTypeOf(income));
 console.log(showTypeOf(deposit));
-console.log('Расходы в месяц составляют ' + getExpensesMonth() + ' тенге');
+console.log('Расходы в месяц составляют ' + expensesAmount + ' тенге');
 console.log(addExpenses.split(' , '));  
 console.log(getTargetMonth());
 console.log('Бюджет на один день составляет ' + Math.floor(budgetDay) + ' тенге');   
