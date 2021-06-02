@@ -1,7 +1,4 @@
 'use strict';
-let isNumber = function(n) {
-    return !isNaN(parseFloat(n) && isFinite(n));
-};
 let money;
 let income = 'Работа в такси';
 let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую').toLowerCase();
@@ -13,6 +10,10 @@ let budgetDay;
 let target;
 let sumAmount;
 let expenses=[];
+
+let isNumber = function(n) {
+    return !isNaN(parseFloat(n) && isFinite(n));
+};
 
 let start = function() {
     do {
