@@ -27,14 +27,15 @@ let showTypeOf = function(data){
 
 let getExpensesMonth = function(){
     let sum=0;
+    let count;
     for (let i = 0; i < 2; i++){
             expenses[i] = prompt('Введите обязательную статью расходов');
-            sum += +prompt('Во сколько это обойдется?');         
+            do {
+                count = prompt('Во сколько это обойдется?'); 
+            } while (!isNumber(count));
+            sum = +sum + count;             
     }
-    if (isNumber(sum)){
-        console.log(sum);                   
-        return sum;
-    }  
+    return sum;
 };
 let expensesAmount = getExpensesMonth();
 
