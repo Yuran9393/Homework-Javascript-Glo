@@ -10,6 +10,8 @@ let budgetDay;
 let target;
 let sumAmount;
 let expenses=[];
+let sum=0;
+let count;
 
 let isNumber = function(n) {
     return !isNaN(parseFloat(n) && isFinite(n));
@@ -26,12 +28,10 @@ let showTypeOf = function(data){
 };
 
 let getExpensesMonth = function(){
-    let sum=0;
-    let count;
     for (let i = 0; i < 2; i++){
             expenses[i] = prompt('Введите обязательную статью расходов');
             do {
-                count = prompt('Во сколько это обойдется?'); 
+                count = +prompt('Во сколько это обойдется?'); 
             } while (!isNumber(count));
             sum = +sum + count;             
     }
