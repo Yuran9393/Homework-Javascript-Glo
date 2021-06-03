@@ -12,11 +12,11 @@ let sumAmount;
 let expenses=[];
 let sum=0;
 let count;
-
+// Проверка на число
 let isNumber = function(n) {
     return !isNaN(parseFloat(n) && isFinite(n));
 };
-
+//Доход за месяц
 let start = function() {
     do {
         money = +prompt('Ваш месячный доход');
@@ -26,7 +26,7 @@ let start = function() {
 let showTypeOf = function(data){
     return typeof data;
 };
-
+//Обязательные расходы
 let getExpensesMonth = function(){
     for (let i = 0; i < 2; i++){
             expenses[i] = prompt('Введите обязательную статью расходов');
@@ -38,12 +38,12 @@ let getExpensesMonth = function(){
     return sum;
 };
 let expensesAmount = getExpensesMonth();
-
+//Доход-расход
 function getAccumulatedMonth(){
     accumulatedMonth = money - expensesAmount;
     return accumulatedMonth;
 }
-
+//Цель
 function getTargetMonth(){
     target = mission / accumulatedMonth;
     if (target < 0 ){
