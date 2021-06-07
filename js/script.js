@@ -9,8 +9,7 @@ start = function() {
     }
     while(!isNumber(money));};
     start();
-let amount,
-appData={
+let appData={
     income :{},
     addIncome : [],
     expenses : {},
@@ -27,7 +26,7 @@ appData={
                 appData.addExpenses=addExpenses.toLowerCase().split(' , ');
                 appData.deposit = confirm('Есть ли у вас депозит в банке?');
                     for (let i = 0; i < 2; i++){
-                        let expenses;
+                        let expenses,amount;
                         expenses = prompt('Введите обязательную статью расходов');
                         do {
                             amount = +prompt('Во сколько это обойдется?');
@@ -43,10 +42,9 @@ appData={
         }
     };
    
-
 appData.getBudget = function (){
     appData.budgetMonth = appData.budget - appData.expensesMonth;
-    appData.budgetDay = appData.budgetMonth / 30;
+    appData.budgetDay = Math.floor(appData.budgetMonth / 30);
     return appData.budgetMonth;
 };
 
@@ -76,7 +74,6 @@ appData.getBudget();
 appData.getTargetMonth();
 appData.getStatusIncome();
                               
-
 console.log('Расходы в месяц составляют: ' + appData.expensesMonth);
 console.log('Цель будет достигнута за ' + Math.ceil(appData.getTargetMonth) + ' месяцев');
 console.log(appData.getStatusIncome()); 
