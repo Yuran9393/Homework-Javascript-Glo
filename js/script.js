@@ -21,6 +21,10 @@ let appData={
     budgetDay:0,
     budgetMonth:0,
     expensesMonth:0,
+    getBudget : function (){
+                appData.budgetMonth = appData.budget - appData.expensesMonth;
+                appData.budgetDay = Math.floor(appData.budgetMonth / 30);
+    },
     asking: function(){
                 let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
                 appData.addExpenses=addExpenses.toLowerCase().split(' , ');
@@ -38,15 +42,8 @@ let appData={
         for (let key in appData.expenses) {
             appData.expensesMonth = appData.expensesMonth + appData.expenses[key];
             }
-            return appData.expensesMonth;
         }
-    };
-   
-appData.getBudget = function (){
-    appData.budgetMonth = appData.budget - appData.expensesMonth;
-    appData.budgetDay = Math.floor(appData.budgetMonth / 30);
-    return appData.budgetMonth;
-};
+    }; 
 
 appData.getTargetMonth = function (){
     appData.getTargetMonth = appData.mission / appData.budgetMonth;
@@ -74,9 +71,10 @@ appData.getBudget();
 appData.getTargetMonth();
 appData.getStatusIncome();
                               
-console.log('Расходы в месяц составляют: ' + appData.expensesMonth);
+console.log('Расходы в месяц составляют: ' + appData.expensesMonth + ' тенге');
 console.log('Цель будет достигнута за ' + Math.ceil(appData.getTargetMonth) + ' месяцев');
 console.log(appData.getStatusIncome()); 
+
 for (let key in appData){
     console.log('Наша программа включает в себя данные: ' + key + '-' + appData[key]);
 }
