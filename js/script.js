@@ -1,9 +1,10 @@
 'use strict';
 const btnStart = document.getElementById('#start');
-const btnIncomeAdd = document.getElementsByTagName('button');
-const btnExpensesAdd = document.getElementsByTagName('button');
+const btnIncomeAdd = document.getElementsByTagName('button')[0];
+const btnExpensesAdd = document.getElementsByTagName('button')[1];
 const depositCheck = document.querySelector('#deposit-check');
-const additionalIncomeItem = document.querySelectorAll('.additional_income-item');
+const additionalIncomeItem = document.querySelectorAll('.additional_income-item')[0];
+const additionalIncomeItem2 = document.querySelectorAll('.additional_income-item')[1];
 const budgetMonthValue = document.getElementsByClassName('.budget_month-value');
 const budgetDayValue = document.getElementsByClassName('.budget_day-value');
 const expensesMonthValue = document.getElementsByClassName('.expenses_month-value');
