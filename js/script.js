@@ -54,7 +54,6 @@ appData={
         });
     },
     start:function() {
-
         appData.budget = +salaryAmount.value;
         appData.getExpenses();
         appData.getIncome();
