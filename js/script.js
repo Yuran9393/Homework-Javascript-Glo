@@ -41,36 +41,37 @@ const AppData = function(){
     this.budgetMonth=0;
     this.expensesMonth=0;
 };
-
+AppData.prototype.start = function() {
+    this.budget = +salaryAmount.value;
+    this.getExpenses();
+    this.getIncome();
+    this.getIncomeMonth();
+    this.getExpensesMonth();
+    this.getAddEpenses();
+    this.getAddIncome();
+    this.getBudget();
+    this.showResult();
+};
 AppData.prototype.getAddEpenses = function(){
+    const _this = this;
     let addExpenses = additionalExpensesItem.value.split(', ');
     addExpenses.forEach(function(item){
         item = item.trim();
         if (item !== ''){
-            this.addExpenses.push(item);
+            _this.addExpenses.push(item);
         }
     });
 };
 AppData.prototype.getAddIncome = function(){
+    const _this = this;
     additionalIncomeItem.forEach(function(item){
         let itemValue = item.value.trim();
         if(itemValue !== ''){
-            this.addIncome.push(itemValue);
+            _this.addIncome.push(itemValue);
         }
     });
 };
-AppData.prototype.start = function() {
-    const _this = this;
-    _this.budget = +salaryAmount.value;
-    _this.getExpenses();
-    _this.getIncome();
-    _this.getIncomeMonth();
-    _this.getExpensesMonth();
-    _this.getAddEpenses();
-    _this.getAddIncome();
-    _this.getBudget();
-    _this.showResult();
-};
+
 AppData.prototype.cancel=function() {
     for(let i = 0; i < inputAll.length; i++){
         inputAll[i].disabled = false;
@@ -198,6 +199,7 @@ AppData.prototype.btnBlock= function(){
     };
 
 AppData.prototype.EventListeners = function(){
+    const _this = this;
     salaryAmount.addEventListener('input', this.btnBlock);
     btnStart.addEventListener ('click', ()=>{
         this.start();
@@ -207,9 +209,8 @@ AppData.prototype.EventListeners = function(){
     periodSelect.addEventListener('input', function(){
     periodAmount.textContent=periodSelect.value;
     });
-    this.btnBlock();
+    _this.btnBlock();
     btnCancel.addEventListener('click', this.cancel);
-
     btnStart.addEventListener ('click', function(){
         for(let i = 0; i < inputAll.length; i++){
             inputAll[i].setAttribute('disabled','disabled');
@@ -222,9 +223,7 @@ AppData.prototype.EventListeners = function(){
     });
 };
 const appData = new AppData();
-
-console.log(appData);
-AppData.prototype.EventListeners();
+appData.EventListeners();
 
 
 
